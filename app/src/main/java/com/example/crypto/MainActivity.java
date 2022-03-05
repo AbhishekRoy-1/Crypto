@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getCurrencyData() {
         progressBar.setVisibility(View.VISIBLE);
-        String BASE_URL= "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest";
+        String BASE_URL= "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?convert=INR";
         RequestQueue requestQueue =Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, BASE_URL, null, new Response.Listener<JSONObject>() {
             @Override
@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
                         String symbol= dataObj.getString("symbol");
                         int rank= dataObj.getInt("cmc_rank");
                         JSONObject quote= dataObj.getJSONObject("quote");
-                        JSONObject USD= quote.getJSONObject("USD");
-                        double price= USD.getDouble("price");
-                        String time= USD.getString("last_updated");
+                        JSONObject INR= quote.getJSONObject("INR");
+                        double price= INR.getDouble("price");
+                        String time= INR.getString("last_updated");
                         currencyModelArrayList.add(new CurrencyModel(name,symbol,rank,price,time));
 
                     }

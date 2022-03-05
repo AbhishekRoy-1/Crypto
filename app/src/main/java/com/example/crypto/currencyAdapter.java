@@ -40,7 +40,7 @@ public class currencyAdapter extends RecyclerView.Adapter<currencyAdapter.ViewHo
             CurrencyModel currencyModel= currencyModelArrayList.get(position);
             holder.name.setText(currencyModel.getName());
             holder.symbol.setText(currencyModel.getSymbol());
-            holder.rate.setText("$" +df2.format(currencyModel.getPrice()));
+            holder.rate.setText("\t₹" +df2.format(currencyModel.getPrice()));
             holder.rank.setText(Integer.toString(currencyModel.getCmc_rank()));
             holder.time.setText(currencyModel.getLast_updated());
     }
